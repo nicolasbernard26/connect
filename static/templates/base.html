@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <title>{% block title %}Welcome to my Website{% endblock %}</title>
+   {% load static %}
+   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+   <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="navbar">
+        <div>
+            <a onclick="openNav()"><img class="icon-menu" src="{% static "pictures/icon/menu.png" %}"/></a>
+            <a class="sidenav-link" href="#home">Home</a>
+            <a class="sidenav-link" href="#news">News</a>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="username-div">
+            <button class="usernamebtn"><img class="icon-user" src="{% static "pictures/icon/user.png" %}"/></button>
+            <div class="username-content">
+                <a class="user-menu" href="#">{{ user.username }}</a>
+                <a class="user-menu" href="#">{{ user.email }}</a>
+                <a class="user-menu" href="#">Link 3</a>
+            </div>
+        </div> 
+        {% endif %}
+    </div>
+    <section id="content">
+        {% block content %}{% endblock %}
+    </section>
+    <footer>
+        <div class="copyright">
+            <p>2017</p>
+        </div>
+        <div class="social">
+            <a href="#" class="support">Contact Us</a>
+            <a href="https://www.facebook.com/nicobernard026" class="face">f</a>
+            <a href="#" class="linked">in</a>
+        </div>
+    </footer>
+
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("content").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("content").style.marginLeft= "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+</body>
+</html>

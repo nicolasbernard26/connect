@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -49,12 +51,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
+
 ROOT_URLCONF = 'connect.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'static/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,8 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
+# Langage utilisé au sein de Django, pour afficher les messages 
+# d'information et d'erreurs notamment
+LANGUAGE_CODE = 'fr-FR'
+# Fuseau horaire, pour l'enregistrement et l'affichage des dates
+# Laissez UTC dans le cas de l'Europe de l'Ouest, c'est notre fuseau ;)
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -116,5 +125,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 
 STATIC_URL = '/static/'

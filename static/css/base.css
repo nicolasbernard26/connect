@@ -1,0 +1,129 @@
+body{
+    margin : 0;
+    height: 100%;
+    display : flex;
+    flex-direction: column;
+    transition: background-color .5s;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color: #818181;
+    font-family: sans-serif;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#content {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #6dcd9a;
+    font-family: Arial;
+    width : 100%;
+    display : flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.navbar a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;    
+    font-family: sans-serif;
+}
+
+.navbar .sidenav-link {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 13px 14px;
+    text-decoration: none;    
+    font-family: sans-serif;
+}
+
+.navbar .username-div {
+    float: left;
+    overflow: hidden;
+    background-color: black;
+}
+
+.username-div .usernamebtn {  
+    border: none;
+    outline: none;
+    color: white;
+    min-width: 220px;
+    background-color: inherit;
+}
+
+.navbar a:hover, .username-div:hover .usernamebtn {
+    background-color: black;
+}
+
+.username-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.username-content a {
+    float: none;
+    color: black;
+    font-size : 10px;
+    padding: 13px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.username-content a:hover {
+    background-color: #ddd;
+}
+
+.username-div:hover .username-content {
+    display: block;
+}
+
+
+.icon-user{
+    padding-top: 6px;
+}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Ma page d'accueil{% endblock %}
+{% block content %}
+    
+    {% if user.is_authenticated %}
+    Vous êtes connecté, {{ user.username }} !
+    <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+    <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+    <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+    {% else %}
+    <p>Error !</p>
+    {% endif %}
+    
+{% endblock %}
