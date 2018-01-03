@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Ma page d'accueil{% endblock %}
+{% block content %}
+
+<div id="info-container">
+    <p class="title">{{ my_event.title}}</p>
+    <p class="subtitle">Administrateur : {{ my_event.getAdmin }}</p>
+    <p class="subtitle">{{ my_event.description }}</p>
+</div>
+
+<div class="page">
+  
+    <div class="galery">
+        <div class="little-galery">
+        {% for photo_event in my_event.photos_left %}
+            <a class="photo" href="#">
+                <img class="image" src='{{ photo_event.photo.url }}'>
+                <p class="title-photo">{{ photo_event.title }}</p>
+            </a>
+            {% endfor %}
+        </div>
+        
+        <div class="little-galery">
+        {% for photo_event in my_event.photos_right %}
+            <a class="photo" href="#">
+                <img class="image" src='{{ photo_event.photo.url }}'>
+                <p class="title-photo">{{ photo_event.title }}</p>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,9 +1,25 @@
 body{
+    position: relative;
     margin : 0;
     height: 100%;
+    min-height: 100%;
     display : flex;
     flex-direction: column;
-    transition: background-color .5s;
+    transition: background-color .2s;
+    overflow: hidden;
+}
+
+p{
+    font-family: var(--font-main);
+}
+
+a{
+    font-family: var(--font-main);
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .sidenav {
@@ -13,23 +29,22 @@ body{
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: black;
+    background-color: var(--primary);
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
     padding-top: 60px;
 }
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    color: #818181;
-    font-family: sans-serif;
+    color: var(--third);
     display: block;
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .sidenav a:hover {
-    color: #f1f1f1;
+    color: var(--contrast);
 }
 
 .sidenav .closebtn {
@@ -40,29 +55,28 @@ body{
     margin-left: 50px;
 }
 
-#content {
-    transition: margin-left .5s;
-    padding: 16px;
-}
-
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
 
 .navbar {
-    overflow: hidden;
-    background-color: #6dcd9a;
-    font-family: Arial;
+    height: 44px;
+    /*background-color: var(--primary);*/
+    background: linear-gradient(to bottom, var(--primary), var(--second));
     width : 100%;
     display : flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+}
+
+.navbar-links{
+    height : 44px;
 }
 
 .navbar a {
     float: left;
-    color: white;
+    /*color: var(--contrast);*/
+    
     text-align: center;
     padding: 12px 14px;
     text-decoration: none;    
@@ -71,7 +85,7 @@ body{
 
 .navbar .sidenav-link {
     float: left;
-    color: white;
+    color: var(--contrast);
     text-align: center;
     padding: 13px 14px;
     text-decoration: none;    
@@ -81,25 +95,25 @@ body{
 .navbar .username-div {
     float: left;
     overflow: hidden;
-    background-color: black;
+    /*background-color: var(--primary);*/
 }
 
 .username-div .usernamebtn {  
     border: none;
     outline: none;
-    color: white;
+    color: var(--contrast);
     min-width: 220px;
     background-color: inherit;
 }
 
 .navbar a:hover, .username-div:hover .usernamebtn {
-    background-color: black;
+    background-color: var(--primary);
 }
 
 .username-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--contrast);
     min-width: 220px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -107,7 +121,7 @@ body{
 
 .username-content a {
     float: none;
-    color: black;
+    color: var(--primary);
     font-size : 10px;
     padding: 13px 16px;
     text-decoration: none;
@@ -116,7 +130,7 @@ body{
 }
 
 .username-content a:hover {
-    background-color: #ddd;
+    background-color: var(--contrast);
 }
 
 .username-div:hover .username-content {
@@ -126,4 +140,62 @@ body{
 
 .icon-user{
     padding-top: 6px;
+}
+
+section{
+    height: 88%;
+    max-height: 88%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+#content::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.185);
+	border-radius: 10px;
+	background-color: black;
+}
+
+#content::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: black;
+}
+
+#content::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.185);
+	background-color: #555;
+}
+
+
+
+#info-container{
+    width: 100%;
+    margin: 0;
+    padding: 20px;;
+    border-bottom: solid 3px var(--second);
+    /*background-color: var(--primary);*/
+    
+    background: linear-gradient(to bottom, var(--primary), var(--second));
+    color : white;
+}
+
+.title{
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    font-family: var(--font-primary);
+}
+
+.subtitle{
+    text-align: center;
+    font-family: var(--font-primary);
 }

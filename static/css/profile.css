@@ -1,0 +1,154 @@
+.image{
+    background-size: cover;
+    background-position: center;
+    width:100%;
+    height: 250px;
+    padding-top: 20px;
+}
+
+.image-round{
+    filter: none;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+    border-style: solid;
+}
+
+.event{
+    font-weight: bold;
+    width: 100%;
+    font-size: x-large;
+    margin : auto;
+    padding : 20px;
+    text-align: center;
+    background-color: var(--primary);
+    color : white;
+    border-bottom: 1px solid #a6a6a6;
+}
+
+.event-container{
+    width : 100%;
+    margin : auto;
+    padding: 0;
+    /*background-color: #e6e6e6;*/
+    display : flex;
+    flex-direction: row;
+    border-bottom: 1px solid #a6a6a6;
+}
+
+
+.event-date{
+    width : 10%;
+    padding : 10px;
+    background-color: var(--second);
+    font-size: small;
+    color : white;
+    margin : 0;
+    text-align: center;
+}
+
+
+.event-global-info{
+    width : 90%;
+    padding: 0;
+    margin : 0;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.event-global-info .event-title{
+    width : 85%;
+    background-color: var(--second);
+    color : white;
+    text-align: center;
+    padding : 10px;
+    margin: 0;
+    text-decoration: none;
+}
+
+.event-global-info .alone{
+    width: 100%;
+    padding-right: 15%;
+}
+
+.event-global-info .event-title:hover{
+    background-color: #404040;
+}
+
+.event-global-info .event-admin{
+    width : 15%;
+    background-color: var(--second);
+    color : white;
+    text-align: center;
+    padding : 10px;
+    margin: 0;
+    text-decoration: none;
+}
+
+.event-global-info .event-admin:hover{
+    background-color: #404040;
+    color : white;
+}
+
+
+
+.event-container-tab{
+    width : 100%;
+    margin : auto;
+    padding: 0;
+    display : flex;
+    flex-direction: row;
+    border-bottom: 1px solid #a6a6a6;
+}
+
+
+.event-date-tab{
+    width : 10%;
+    padding : 10px;
+    background-color: var(--second);
+    color : #a6a6a6;
+    font-size: small;
+    margin : 0;
+    text-align: center;
+}
+
+
+.event-global-info-tab{
+    width : 90%;
+    padding: 0;
+    margin : 0;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.event-global-info-tab .event-title-tab{
+    width : 85%;
+    background-color: var(--second);
+    color : #a6a6a6;
+    font-size: small;
+    text-align: center;
+    padding : 10px;
+    margin: 0;
+    text-decoration: none;
+}
+
+.event-global-info-tab .alone{
+    width : 100%;
+    padding-right: 15%;
+}
+
+.event-global-info-tab .event-admin-tab{
+    width : 15%;
+    background-color: var(--second);
+    color : #a6a6a6;
+    font-size: small;
+    text-align: center;
+    padding : 10px;
+    margin: 0;
+    text-decoration: none;
+}

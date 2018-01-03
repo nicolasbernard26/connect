@@ -1,0 +1,11 @@
+:root {
+
+    /* COLOR : */
+    --primary: rgb(15, 15, 15);
+    --second: #181818;
+    --third: #474747;
+    --contrast: white;
+
+    /* FONT :*/
+    --font-main: Arial, Helvetica, sans-serif;
+}

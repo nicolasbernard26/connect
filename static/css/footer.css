@@ -3,8 +3,7 @@ footer{
     background-color: #333333;
     color:white;
     display : flex;
-    justify-content: space-between  ;
-    width:100%;
+    justify-content: space-between;
 }
 
 .copyright{
