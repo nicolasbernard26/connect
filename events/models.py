@@ -19,6 +19,11 @@ def file_path(instance, filename):
          event_id = instance.event.id, name = filename) 
     return file_path_photo
 
+def file_path_event_photo(instance, filename):
+    file_path_photo = 'events/event_{event_id}/main_{name}'.format(
+         event_id = instance.id, name = filename) 
+    return file_path_photo
+
 
 class Event(models.Model):
     """
@@ -40,6 +45,7 @@ class Event(models.Model):
     date_end = models.DateTimeField(auto_now_add=False, auto_now=False)
     entries = models.ManyToManyField(Profile, through='Involvement')
     theme = models.IntegerField(choices=THEMES_CHOICES, default=5)
+    photo_event = models.ImageField(null=True, blank=True, upload_to=file_path_event_photo)
 
     
     def __str__(self):

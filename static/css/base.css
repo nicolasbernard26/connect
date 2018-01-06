@@ -9,17 +9,17 @@ body{
     overflow: hidden;
 }
 
-p{
-    font-family: var(--font-main);
-}
-
-a{
-    font-family: var(--font-main);
+p, a, input, textarea, label{
+    font-family: var(--font-primary);
 }
 
 html {
     height: 100%;
     box-sizing: border-box;
+}
+
+img{
+    image-orientation: from-image;
 }
 
 .sidenav {
@@ -79,8 +79,7 @@ html {
     
     text-align: center;
     padding: 12px 14px;
-    text-decoration: none;    
-    font-family: sans-serif;
+    text-decoration: none;
 }
 
 .navbar .sidenav-link {
@@ -88,8 +87,7 @@ html {
     color: var(--contrast);
     text-align: center;
     padding: 13px 14px;
-    text-decoration: none;    
-    font-family: sans-serif;
+    text-decoration: none;
 }
 
 .navbar .username-div {
@@ -147,6 +145,7 @@ section{
     max-height: 88%;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: var(--primary);
 }
 
 *,
@@ -175,27 +174,34 @@ section{
 	background-color: #555;
 }
 
-
-
-#info-container{
+#page-info-container{
     width: 100%;
     margin: 0;
-    padding: 20px;;
+    padding: 20px;
     border-bottom: solid 3px var(--second);
     /*background-color: var(--primary);*/
-    
     background: linear-gradient(to bottom, var(--primary), var(--second));
-    color : white;
+    display : flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.edit{
+    margin-top : 60px;
+}
+
+.info-container{
+    color : var(--contrast);
 }
 
 .title{
     font-size: xx-large;
     font-weight: bold;
-    text-align: center;
-    font-family: var(--font-primary);
+    text-align: left;
+    width: auto;
 }
 
 .subtitle{
-    text-align: center;
-    font-family: var(--font-primary);
+    text-align: left;
 }

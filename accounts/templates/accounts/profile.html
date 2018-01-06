@@ -4,65 +4,47 @@
 {% block content %}
 
 {% if profile.background %}
-<div class="image" style="background-image:url('{{ profile.background.url }}')">
+<div class="image-background" style="background-image:url('{{ profile.background.url }}')">
 {% else %}
-<div class="image">
+<div class="image-background">
 {% endif %}
-	{% if profile.avatar %}
-	<div class="image-round" style="background-image:url('{{ profile.avatar.url }}')">
-	{% else %}
-	<div class="image-round" style="background-image:url('http://localhost:8000/media/avatars/default.png')">
-	{% endif %}
+</div>
+
+<div id="page-info-container">
+	<div class="info-container">
+		<p class="title">{{ user.first_name }} {{ user.last_name }}</p>
+		<p class="subtitle">{{ user.email }}</p>
 	</div>
 </div>
 
-<div id="info-container">
-    <p class="title">{{ user.first_name }} {{ user.last_name }}</p>
-    <p class="subtitle">{{ user.email }}</p>
+<div id="events">
+	<p class="event">Les événements auxquels j'ai participés :</p>
+	<div class="events-image-container">
+		{% for involve in involves %}
+		<div class="image-event" style="background-image:url('{{ involve.event.photo_event.url }}')">
+			
+			<a class="event-title info" href="/events/event/detail/{{ involve.event.id }}"><p class="info">{{ involve.event.title}}</p></a>
+
+		</div>
+		{% endfor %}
+
+		<a class="image-event" style="background-image:url('/static/pictures/icon/plus.png')" href="/events/event/create"></a>
+
+	</div>
 </div>
 
-<p class="event">Les événements auxquels j'ai participés :</p>
-<div class="events-container">
-	<div class="event-container-tab">
-		<p class="event-date-tab">Date :</p>
-		
-		<div class="event-global-info-tab">
-			<p class="event-title-tab">Nom de l'événement :</p>
-			<p class="event-admin-tab">Organisateur :</a>
+<div class="my_events">
+	<p class="event">Les événements que j'ai organisés :</p>
+	<div class="events-image-container">
+		{% for event in my_events %}
+		<div class="image-event" style="background-image:url('{{ event.photo_event.url }}')">
+			<a class="event-title info" href="/events/event/detail/{{ event.id }}"><p class="info">{{ event.title}}</p></a>
 		</div>
-	</div>
-	{% for involve in involves %}
-	
-	<div class="event-container">
-		<p class="event-date">{{ involve.event.date_start |date:"d F" }}</p>
-		
-		<div class="event-global-info" href="/events/event/detail/{{ involve.event.id }}">
-			<a class="event-title" href="/events/event/detail/{{ involve.event.id }}">{{ involve.event.title}}</a>
-			<a class="event-admin" href="/events/event/detail/{{ involve.event.id }}">{{ involve.event.admin.user.first_name}} {{ involve.event.admin.user.last_name}}</a>
-		</div>
-	</div>
-	{% endfor %}
-</div>
+		{% endfor %}
 
-<p class="event">Les événements que j'ai organisés :</p>
-<div class="events-container">
-	<div class="event-container-tab">
-		<p class="event-date-tab">Date :</p>
-		
-		<div class="event-global-info-tab">
-			<p class="event-title-tab alone">Nom de l'événement :</p>
-		</div>
-	</div>
+		<a class="image-event" style="background-image:url('/static/pictures/icon/plus.png')" href="/events/event/create"></a>
 
-	{% for event in my_events %}
-	<div class="event-container">
-		<p class="event-date">{{ event.date_start |date:"d F" }}</p>
-		
-		<div class="event-global-info">
-			<a class="event-title alone" href="/events/event/detail/{{ event.id }}">{{ event.title}}</a>
-		</div>
 	</div>
-	{% endfor %}
 </div>
 {% endblock %}
 

@@ -1,2 +1,4 @@
 from .login_view import *
-from .personnal_space_view import *
+from .profile import *
+from .logout_view import *
+from .sign_up import *

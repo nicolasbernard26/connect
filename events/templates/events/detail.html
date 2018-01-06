@@ -1,34 +1,45 @@
 {% extends "base.html" %}
 
-{% block title %}Ma page d'accueil{% endblock %}
+{% block title %}{{ my_event.title}}{% endblock %}
 {% block content %}
+{% load static %}
 
-<div id="info-container">
-    <p class="title">{{ my_event.title}}</p>
-    <p class="subtitle">Administrateur : {{ my_event.getAdmin }}</p>
-    <p class="subtitle">{{ my_event.description }}</p>
-</div>
-
-<div class="page">
-  
-    <div class="galery">
-        <div class="little-galery">
-        {% for photo_event in my_event.photos_left %}
-            <a class="photo" href="#">
-                <img class="image" src='{{ photo_event.photo.url }}'>
-                <p class="title-photo">{{ photo_event.title }}</p>
-            </a>
-            {% endfor %}
-        </div>
-        
-        <div class="little-galery">
-        {% for photo_event in my_event.photos_right %}
-            <a class="photo" href="#">
-                <img class="image" src='{{ photo_event.photo.url }}'>
-                <p class="title-photo">{{ photo_event.title }}</p>
-            </a>
-        {% endfor %}
-        </div>
+<div id="page-info-container">
+    <div class="info-container">
+        <p class="title">{{ my_event.title}}</p>
+        <p class="subtitle">Administrateur : {{ my_event.getAdmin }}</p>
+        <p class="subtitle">{{ my_event.description }}</p>
     </div>
 </div>
+
+<div class="galery">
+    <div class="little-galery">
+    {% for photo_event in my_event.photos_left %}
+        <div class="w3-card-4 photo">
+            <img src='{{ photo_event.photo.url }}' onclick="openModal('{{ photo_event.photo.url }}','{{ photo_event.title }}')" class="image">
+            <div class="w3-container w3-center">
+                <p style="color : white">{{ photo_event.title }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    
+    <div class="little-galery">
+    {% for photo_event in my_event.photos_right %}
+    <div class="w3-card-4 photo">
+            <img src='{{ photo_event.photo.url }}' onclick="openModal('{{ photo_event.photo.url }}','{{ photo_event.title }}')" class="image">
+            <div class="w3-container w3-center">
+                <p style="color : white">{{ photo_event.title }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>
+
 {% endblock %}

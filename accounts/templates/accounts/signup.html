@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<div id="info-container">
+    <p class="title">Sign up</p>
+    <p class="subtitle">Please complete all the fields of the form</p>
+</div>
+{% if envoi %}Votre message a bien été envoyé !{% endif %}
+<div class="form-container">
+    <form class="form" enctype="multipart/form-data" action="" method="post">
+        {% csrf_token %}
+        
+        {% for form in forms %}
+        {% for field in form %}
+        <div class="field-container">
+            {{ field.label_tag }} 
+            {% for error in field.errors %}
+                <p class="error-form">{{ error }}</p>
+            {% endfor %}
+            <br>
+            {{ field }}
+        </div>
+        {% endfor %}
+        {% endfor %}
+
+        <input class="button-submit-form" type="submit" value="Sign Up" />
+    </form>
+</div>
+{% endblock %}

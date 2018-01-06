@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from events.models import Event, Involvement, PhotoEvent
 
 @login_required()
-def profile(request):
+def profile_view(request):
     user = request.user
     profile = user.profile_user
     involves = Involvement.objects.filter(profile=profile) # pylint: disable=no-member
@@ -12,5 +12,5 @@ def profile(request):
         if len(involve.event.photos) > 6:
             involve.event.photos = involve.event.photos[slice(0, 6, 1)]
 
-    my_events = Event.objects.filter(admin=profile)         
+    my_events = Event.objects.filter(admin=profile)       # pylint: disable=no-member
     return render(request, 'accounts/profile.html', locals())
