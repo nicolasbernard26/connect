@@ -14,19 +14,13 @@
    <script src="{% static 'js/modal.js' %}"></script>
 </head>
 <body>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/accounts/profile">Profile</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-    </div>
+    
     <div class="navbar">
         <div class="navbar-links">
             {% if user.is_authenticated %}
             <a onclick="openNav()"><img class="icon-menu" src="{% static "pictures/icon/menu.png" %}"/></a>
             {% endif %}
-            <a class="sidenav-link" href="/accounts/logout/">Home</a>
+            <a class="sidenav-link" href="/accounts/profile/">Mon profil</a>
             <a class="sidenav-link" href="#news">News</a>
         </div>
         {% if user.is_authenticated %}

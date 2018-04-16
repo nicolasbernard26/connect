@@ -9,8 +9,8 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^events/', include('events.urls')),
-    url(r'^accounts/', include('accounts.urls')),
+    url(r'^API/account/', include('account_rest.urls')),
+    url(r'^API/event/', include('event_rest.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

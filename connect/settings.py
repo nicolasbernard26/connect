@@ -25,7 +25,49 @@ SECRET_KEY = 'pzmz9*_ohn#pq0wl7)!pe=x#zjf*hd-la#8md40zi9fhd(rjv='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:4200',
+)
+
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken',
+    'token',
+    'x-device-id',
+    'x-device-type',
+    'x-push-id',
+    'dataserviceversion',
+    'maxdataserviceversion',
+    'Enctype'
+)
+
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'UPDATE',
+    'OPTIONS'
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 
 # Application definition
@@ -38,14 +80,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'reset_migrations',
-    'events',
-    'accounts',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'event',
+    'account',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -78,7 +123,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'connect.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -88,6 +132,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1000 * 1000 * 1000
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1000 * 1000 * 1000
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 1000 * 1000 * 1000
 
 
 # Password validation
