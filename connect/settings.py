@@ -27,10 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
+    '37.59.41.47'
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:4200',
+    'localhost',
+    '37.59.41.47'
 )
 
 CORS_ALLOW_HEADERS = (
@@ -160,7 +162,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-# Langage utilise au sein de Django, pour afficher les messages
+# Langage utilisé au sein de Django, pour afficher les messages 
 # d'information et d'erreurs notamment
 LANGUAGE_CODE = 'fr-FR'
 # Fuseau horaire, pour l'enregistrement et l'affichage des dates
