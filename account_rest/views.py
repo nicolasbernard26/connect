@@ -32,29 +32,6 @@ def profile(request, id):
     else :
         profile = NonConnectionProfileSerializer(Profile.objects.get(id=id), many=False)
         return JsonResponse({"profile" : profile.data, "relation": "non_connection"}, safe=False)
-    
-
-
-    ''' elif request.method == 'POST':
-        file_key=None
-        for file_key in sorted(request.FILES):
-            pass
-        print(file_key)
-
-        wrapped_file = ImageFile(request.FILES[file_key])
-        filename = wrapped_file.name
-        print(filename)
-        # new photo table-row 
-        print(request.user.profile_user)   
-        profile = request.user.profile_user     
-        profile.avatar = request.FILES[file_key]
-        try:
-            profile.save()
-        except OSError:
-            print ("Deal with this situation")
-
-        # do your stuff here.
-        return JsonResponse({"text": "I don't know ..."}, safe=False) '''
 
 
 @api_view(['GET', 'POST'])
@@ -67,14 +44,12 @@ def login(request):
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
-        body = json.loads(request.body)
-        print(body['username'])
-        user = User.objects.get(username=body["username"])
-        if (user.check_password(body["password"]) and not user.is_anonymous):
+        user = User.objects.get(username=request.data.get("username"))
+        if user.check_password(request.data.get("password")) and not user.is_anonymous:
             token = Token.objects.get_or_create(user=user)
             profile = ProfileSerializer(user.profile_user, many=False)
-            return JsonResponse({"authenticated": "true", "token" : str(token[0]), "profile" : profile.data}, safe=False)
-        else :
+            return JsonResponse({"authenticated": "true", "token": str(token[0]), "profile": profile.data}, safe=False)
+        else:
             return JsonResponse({"authenticated": "false"}, safe=False)
 
 
