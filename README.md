@@ -1,4 +1,4 @@
-# connect
+# Connect
 ## Description :
 Personnal project to upload photos.
 
