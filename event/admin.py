@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from event.models.involvement import Involvement
-from event.models.event import Event
-from event.models.photoEvent import PhotoEvent
+from event.models.involvement_model import InvolvementModel
+from event.models.event_model import EventModel
+from event.models.photo_event_model import PhotoEventModel
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -22,6 +22,6 @@ class PhotoEventAdmin(admin.ModelAdmin):
     search_fields  = ('event', 'photo')
 
 
-admin.site.register(Involvement, InvolvementAdmin)
-admin.site.register(Event, EventAdmin)
-admin.site.register(PhotoEvent, PhotoEventAdmin)
+admin.site.register(InvolvementModel, InvolvementAdmin)
+admin.site.register(EventModel, EventAdmin)
+admin.site.register(PhotoEventModel, PhotoEventAdmin)

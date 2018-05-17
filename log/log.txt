@@ -1,0 +1,31 @@
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 14, 2018 - 18:30:43
+Django version 2.0, using settings 'connect.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Not Found: /API/event/
+"GET /API/event/ HTTP/1.1" 404 2780
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2325
+"OPTIONS /API/event/2 HTTP/1.1" 200 0
+"GET /API/event/2 HTTP/1.1" 200 1067
+"OPTIONS /API/event/2/photo HTTP/1.1" 200 0
+"GET /media/default/no-photo2.png HTTP/1.1" 200 30188
+"OPTIONS /API/account/connections HTTP/1.1" 200 0
+"OPTIONS /API/account/connections HTTP/1.1" 200 0
+"GET /API/event/2/photo HTTP/1.1" 200 284
+{'connections': [OrderedDict([('id', 22), ('avatar', None), ('background', None), ('user', OrderedDict([('username', 'dobby'), ('first_name', 'Dobby'), ('last_name', 'Elfe Libre'), ('email', 'dobby@connect.com')])), ('involves', []), ('connections', [OrderedDict([('id', 12), ('avatar', None), ('background', None), ('user', OrderedDict([('username', 'matthieu'), ('first_name', 'Matthieu'), ('last_name', 'Bernard'), ('email', 'matthieu@connect.com')]))])])])]}
+"GET /API/account/connections HTTP/1.1" 200 374
+"GET /API/account/connections HTTP/1.1" 200 374
+{'connections': [OrderedDict([('id', 22), ('avatar', None), ('background', None), ('user', OrderedDict([('username', 'dobby'), ('first_name', 'Dobby'), ('last_name', 'Elfe Libre'), ('email', 'dobby@connect.com')])), ('involves', []), ('connections', [OrderedDict([('id', 12), ('avatar', None), ('background', None), ('user', OrderedDict([('username', 'matthieu'), ('first_name', 'Matthieu'), ('last_name', 'Bernard'), ('email', 'matthieu@connect.com')]))])])])]}
+"GET /media/events/event_2/20160131_015803.jpg HTTP/1.1" 200 3083317
+"OPTIONS /API/event/2/photo?id_photo=20 HTTP/1.1" 200 0
+"DELETE /API/event/2/photo?id_photo=20 HTTP/1.1" 200 16
+"GET /API/event/2 HTTP/1.1" 200 1067
+"GET /API/event/2/photo HTTP/1.1" 200 14
+"GET /API/account/connections HTTP/1.1" 200 374
+{'connections': [OrderedDict([('id', 22), ('avatar', None), ('background', None), ('user', OrderedDict([('username', 'dobby'), ('first_name', 'Dobby'), ('last_name', 'Elfe Libre'), ('email', 'dobby@connect.com')])), ('involves', []), ('connections', [OrderedDict([('id', 12), ('avatar', None), ('background', None), ('user', OrderedDict([('username', 'matthieu'), ('first_name', 'Matthieu'), ('last_name', 'Bernard'), ('email', 'matthieu@connect.com')]))])])])]}
+{'connections': [OrderedDict([('id', 22), ('avatar', None), ('background', None), ('user', OrderedDict([('username', 'dobby'), ('first_name', 'Dobby'), ('last_name', 'Elfe Libre'), ('email', 'dobby@connect.com')])), ('involves', []), ('connections', [OrderedDict([('id', 12), ('avatar', None), ('background', None), ('user', OrderedDict([('username', 'matthieu'), ('first_name', 'Matthieu'), ('last_name', 'Bernard'), ('email', 'matthieu@connect.com')]))])])])]}
+"GET /API/account/connections HTTP/1.1" 200 374

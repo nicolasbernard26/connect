@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    '37.59.41.47'
+    '37.59.41.47',
+    '127.0.0.1'
 ]
 
 CORS_ORIGIN_WHITELIST = (
@@ -188,3 +189,19 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 MEDIA_URL = '/media/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
