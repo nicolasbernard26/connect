@@ -1,4 +1,4 @@
-# Connect
+# Projet Connect
 ## Description :
 Projet personnel.
 Il s'agit de l'application REST réalisé en Django.
