@@ -85,6 +85,8 @@ target/
 __pycache__/
 local_settings.py
 
+*.jpg
+*.pyc
 .env
 db.sqlite3
 connect/settings.py
