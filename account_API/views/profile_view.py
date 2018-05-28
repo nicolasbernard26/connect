@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.db.models import Count
 from rest_framework.views import APIView
 
+from account.repository.profile_repository import ProfileRepository
 from account_API.serializers import ProfileSerializer, ConnectionProfileSerializer, NonConnectionProfileSerializer
 from account.models.profile_model import ProfileModel
 
@@ -37,3 +38,10 @@ class ProfileView(APIView):
         else:
             profile = NonConnectionProfileSerializer(ProfileModel.objects.get(id=id), many=False)
             return JsonResponse({"profile": profile.data, "relation": "non_connection"}, safe=False)
+
+    def post(self, request):
+        """
+        """
+        profile_created: ProfileModel = ProfileRepository().create(request.data, request.FILES)
+        ProfileRepository().save(profile_created)
+        return JsonResponse({"authenticated": profile_created.id}, safe=False)

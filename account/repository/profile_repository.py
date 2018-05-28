@@ -4,14 +4,21 @@ from django.http import QueryDict
 
 from account.models.profile_model import ProfileModel
 from connect.errors.invalid_argument_error import InvalidArgumentError
+from connect.shared.base_repository import BaseRepository
 
 
-class ProfileRepository:
+class ProfileRepository(BaseRepository):
 
-    def check_password(self):
+    @staticmethod
+    def get_by_id(id: int):
+        return ProfileModel.objects.get(id=id)
+
+    @staticmethod
+    def check_password():
         return True
 
-    def create(self, data: QueryDict, files: QueryDict):
+    @staticmethod
+    def create(data: QueryDict, files: QueryDict):
 
         # region check parameter
         try:
@@ -47,5 +54,10 @@ class ProfileRepository:
             profile.avatar = ImageFile(files.FILES[file_key])
         return profile
 
-    def save(self, profile: ProfileModel):
+    @staticmethod
+    def save(profile: ProfileModel):
         profile.save()
+
+    @staticmethod
+    def get_by_id(id: int) -> ProfileModel:
+        return ProfileModel.objects.get(id=id)

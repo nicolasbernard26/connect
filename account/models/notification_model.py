@@ -18,7 +18,7 @@ from datetime import datetime
 class NotificationModel(models.Model):
     profile = models.ForeignKey(ProfileModel, related_name='notifications', on_delete=models.DO_NOTHING)
     type = models.IntegerField(choices=NOTIFICATION_TYPES, default=4)
-    profileRelated = models.ForeignKey(ProfileModel, on_delete=models.DO_NOTHING, blank=True, null=True)
+    profileRelated = models.ForeignKey(ProfileModel, on_delete=models.DO_NOTHING, blank=False, null=False)
     eventRelated = models.ForeignKey(EventModel, on_delete=models.DO_NOTHING, blank=True, null=True)
     photoEventRelated = models.ForeignKey(PhotoEventModel, on_delete=models.DO_NOTHING, blank=True, null=True)
     message = models.CharField(max_length=300, blank=True)
@@ -33,20 +33,14 @@ class NotificationModel(models.Model):
 
     @property
     def object(self):
-        return self.profileRelated or self.eventRelated or self.photoEventRelated
+        return self.eventRelated or self.photoEventRelated
 
     @object.setter
     def object(self, obj):
-        if type(obj) == ProfileModel:
-            self.profileRelated = obj
-            self.eventRelated = None
-            self.photoEventRelated = None
-        elif type(obj) == EventModel:
-            self.profileRelated = None
+        if type(obj) == EventModel:
             self.eventRelated = obj
             self.photoEventRelated = None
         elif type(obj) == PhotoEventModel:
-            self.profileRelated = None
             self.eventRelated = None
             self.photoEventRelated = obj
         else:

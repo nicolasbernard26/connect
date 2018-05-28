@@ -10,7 +10,8 @@ from account.constant.choices.notification_types import NOTIFICATION_TYPES
 from account.models.notification_model import NotificationModel
 from account.repository.notification_repository import NotificationRepository
 from account.repository.profile_repository import ProfileRepository
-from account_API.serializers import ProfileSerializer, ConnectionSerializer, ConnectionProfileSerializer, NonConnectionProfileSerializer
+from account_API.serializers import ProfileSerializer, ConnectionSerializer, ConnectionProfileSerializer, \
+    NonConnectionProfileSerializer, NotificationSerializer
 from event_API.serializers import InvolvementSerializer
 from account.models.profile_model import ProfileModel
 
@@ -23,21 +24,21 @@ logging.basicConfig(filename='log/account_API.log', level=logging.DEBUG)
 logging.info('Initialization of account_API')
 
 
-class ConnectionView(APIView):
+class NotificationView(APIView):
 
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        serializer = ConnectionSerializer(request.user.profile_user, many=False)
+        profile: ProfileModel = get_object_or_404(ProfileModel, user=request.user)
+        serializer = NotificationSerializer(profile.notifications, many=True)
         print(serializer.data)
-        return JsonResponse(serializer.data, safe=False)
+        return JsonResponse({"notifications": serializer.data}, safe=False)
 
     def post(self, request):
         profile: ProfileModel = get_object_or_404(ProfileModel, user=request.user)
         id_other_profile = request.data.__getitem__("id_other_profile")
-        notification_type = NOTIFICATION_TYPES.__getitem__('add')
         notification: NotificationModel = NotificationRepository().create(id_other_profile,
                                                                           profile.id,
-                                                                          notification_type)
+                                                                          1)
         notification.save()
         return JsonResponse({"error": "no_error", "notification_id": notification.id}, safe=False)
