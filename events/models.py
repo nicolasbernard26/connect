@@ -57,28 +57,26 @@ class Event(models.Model):
         return self.title
 
     def getAdmin(self):
-        return "{0} {1}".format(self.admin.user.first_name, self.admin.user.last_name)
+        return "{0} {1}".format(self.admin, self.admin)
 
 class Involvement(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="participants")
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="involve")
 
     def __str__(self):
         return "{0}, {1}".format(self.profile, self.event)
 
+    class Meta:
+        unique_together = ('event', 'profile',)
+
+
 class PhotoEvent(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="photos")
     photo = models.ImageField(null=True, blank=True, upload_to=file_path)
-    orientation = models.BooleanField(default=False)
+    owner = models.ForeignKey(Profile, related_name='own_photo', on_delete=models.CASCADE, default=13)
     title = models.CharField(max_length=100, default="")
 
 
     def __str__(self):
-        return "{0}, {1}".format(self.event, self.photo)
-
-    def getOrientation(self):
-        img = Image.open(self.photo).rotate(90, expand=True)
-        print(img)
-        self.orientation = True
-        return True
+        return "{0}, {1}, {2}".format(self.event, self.photo, self.owner)
 

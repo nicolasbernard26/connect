@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from ..forms import ProfileForm, UserComplementForm
 from django.contrib.auth.decorators import login_required
 
-from .profile import profile_view
+from .my_profile_view import my_profile_view
 
 def sign_up_view(request):
     error = False
@@ -25,7 +25,7 @@ def sign_up_view(request):
             profile.user = user
             profile.save()
 
-            return redirect(profile_view)
+            return redirect(my_profile_view)
 
     else:
         forms=[UserCreationForm(), UserComplementForm(), ProfileForm()]

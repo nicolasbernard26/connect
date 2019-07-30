@@ -1,9 +1,25 @@
-.image-background{
-    background-size: cover;
-    background-position: center;
-    width:100%;
+.div-background{
     height: 250px;
-    padding-top: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-background{
+    width: 100%;
+    height: auto;
+    top: -50%;
+}
+
+.page-profile{
+    display : flex;
+    flex-direction: row;
+}
+
+.info{
+    width : 100%;
+    padding : 10px;
+    background-color: var(--green);
+    color : var(--contrast);
 }
 
 .event{
@@ -48,4 +64,51 @@
     text-decoration: none;
     background-color: var(--primary);
     padding: 10px;
+}
+
+.title-list{
+    width : 100%;
+    padding : 10px;
+    background-color: var(--second);
+    color: var(--contrast);
+}
+
+.follow-profile{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    text-decoration: none;
+}
+
+.follow-profile:hover{
+    background-color: var(--primary);
+}
+
+.avatar{
+    margin : 20px;
+    filter: none;
+    height: auto;
+    max-height: 40px;
+    width: auto; 
+    max-width: 40px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    /*border-style: solid var(--primary);*/
+    /*filter: grayscale(100%) grayscale(100%);*/
+    overflow: hidden;
+}
+
+.name-profile{
+    color : var(--contrast);
+    font-size: large;
+    padding: 8px;
+}
+
+.common_following{
+    width: 100%;
+    color : var(--contrast);
+    font-size: x-small;
+    text-align: right;
+    padding: 8px;
 }

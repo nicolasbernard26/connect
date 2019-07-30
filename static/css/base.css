@@ -96,6 +96,13 @@ img{
     /*background-color: var(--primary);*/
 }
 
+.navbar-fixed {
+    top: 0;
+    z-index: 100;
+  position: fixed;
+    width: 100%;
+}
+
 .username-div .usernamebtn {  
     border: none;
     outline: none;
@@ -186,11 +193,6 @@ section{
     justify-content: space-between;
 }
 
-
-.edit{
-    margin-top : 60px;
-}
-
 .info-container{
     color : var(--contrast);
 }
@@ -200,6 +202,7 @@ section{
     font-weight: bold;
     text-align: left;
     width: auto;
+    margin : 0;
 }
 
 .subtitle{

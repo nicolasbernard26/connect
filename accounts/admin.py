@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Profile
-"""class ProfileAdmin(admin.ModelAdmin):
-"""
+from .models import Profile, Follow
 
 
 admin.site.register(Profile)
+
+admin.site.register(Follow)

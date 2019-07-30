@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from ..forms import LoginForm
 from django.contrib.auth.decorators import login_required
 
-from .profile import profile_view
+from .my_profile_view import my_profile_view
 
 def login_view(request):
     error = False
@@ -18,7 +18,7 @@ def login_view(request):
                 if user:  # Si l'objet renvoyé n'est pas None
                     login(request, user)  # nous connectons l'utilisateur
                     profile = user.profile_user
-                    return redirect(profile_view)
+                    return redirect(my_profile_view)
                     
                 else: # sinon une erreur sera affichée
                     error = True
