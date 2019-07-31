@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}{{ my_event.title}}{% endblock %}
+{% block content %}
+{% load static %}
+
+<div id="page-info-container">
+    <div class="info-container">
+        <p class="title">{{ my_event.title}}</p>
+        <p class="subtitle">Administrateur : {{ my_event.getAdmin }}</p>
+        <p class="subtitle">{{ my_event.description }}</p>
+    </div>
+</div>
+
+<div class="w3-bar w3-black">
+    <a class="w3-bar-item w3-button" onclick="openTab('photos')">Photos</a>
+    <a class="w3-bar-item w3-button" onclick="openTab('participant')">Participants</a>
+    <a class="w3-bar-item w3-button" onclick="openTab('slideshow')">Diaporama</a>
+    <a class="w3-bar-item w3-button" onclick="openTab('informations')">Informations</a>
+</div>
+
+<div class="tab" id="photos">
+    <div class="galery">
+        
+        {% for photo_event in photos %}
+        <div class="w3-card-4 photo">
+            <img src='{{ photo_event.photo.url }}' onclick="openModal('{{ photo_event.photo.url }}','{{ photo_event.title }}')" class="image">
+            <div class="w3-container w3-center">
+                <p style="color : white">{{ photo_event.title }}</p>
+            </div>
+        </div>
+        {% endfor %}   
+        
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+</div>
+
+<div class="tab" id="participant" style="display:none">
+    {% if not no_participant %}
+    <p class="title-list">{{ nb_participants }} personnes participent à l'événement :</p>
+
+    {% for involve in participants %}
+    <a class="follow-profile" href="/account/profile/">
+        <img src="{% static "pictures/default/avatar.png" %}" class="avatar">
+        <p class="name-profile">{{ involve.profile.getName }}</p>
+    </a>
+    {% endfor %}
+
+    {% else %}
+    <p class="info">Personne ne participe à cet événement pour l'instant.</p>
+    {% endif %}
+</div>
+
+<div class="tab" id="slideshow" style="display:none"></div>
+
+<div class="tab" id="informations" style="display:none"></div>
+
+<script>
+
+    function openTab(tabName) {
+        var i;
+        var x = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none"; 
+        }
+        document.getElementById(tabName).style.display = "block"; 
+    }
+
+</script>
+
+{% endblock %}

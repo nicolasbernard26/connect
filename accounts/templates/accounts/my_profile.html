@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Mon profil{% endblock %}
+{% block content %}
+
+{% load static %}
+
+{% if profile.background %}
+<div class="div-background"><img class="image-background" src="{{ profile.background.url }}"></div>
+{% else %}
+<div class="image-background"></div>
+{% endif %}
+
+<div id="page-info-container">
+	<div class="info-container">
+		<p class="title">{{ user.first_name }} {{ user.last_name }}</p>
+	</div>
+</div>
+
+<div class="w3-bar w3-black">
+	<a class="w3-bar-item w3-button" onclick="openTab('events')">Mes événements</a>
+	<a class="w3-bar-item w3-button" onclick="openTab('following')">Mes relations</a>
+	<a class="w3-bar-item w3-button" onclick="openTab('photos')">Mes photos</a>
+	<a class="w3-bar-item w3-button" onclick="openTab('setting')">Informations</a>
+</div>
+
+<div class="tab" id="events">
+	<p class="title-list">Voici les événements auxquels vous avez participés :</p>
+
+	<div class="events-image-container">
+		{% for involve in events %}
+		<div class="image-event" style="background-image:url('{{ involve.event.photo_event.url }}')">
+			
+			<a class="event-title info" href="/events/event/detail/{{ involve.event.id }}"><p class="info">{{ involve.event.title}}</p></a>
+
+		</div>
+		{% endfor %}
+
+		<a class="image-event" style="background-image:url('/static/pictures/icon/plus.png')" href="/events/event/create"></a>
+
+	</div>
+
+	<p class="title-list">Voici les événements que vous avez organisés :</p>
+
+	<div class="events-image-container">
+		{% for event in my_events %}
+		<div class="image-event" style="background-image:url('{{ event.photo_event.url }}')">
+			
+			<a class="event-title info" href="/events/event/detail/{{ event.id }}"><p class="info">{{ event.title}}</p></a>
+
+		</div>
+		{% endfor %}
+
+		<a class="image-event" style="background-image:url('/static/pictures/icon/plus.png')" href="/events/event/create"></a>
+
+	</div>
+</div>
+
+
+<div class="tab" id="following" style="display:none">
+
+	{% if not no_following %}
+	<p class="title-list">Vous suivez {{ nb_following }} personnes :</p>
+
+	{% for follow in following %}
+	<a class="follow-profile" href="/account/profile/">
+		<img src="{% static "pictures/default/avatar.png" %}" class="avatar">
+		<p class="name-profile">{{ follow.following.getName }}</p>
+	</a>
+	{% endfor %}
+
+	{% else %}
+	<p class="info">Vous ne suivez personnes.</p>
+	{% endif %}
+
+	{% if not no_followers %}
+	<p class="title-list">Vous êtes suivi par {{ nb_followers }} personnes :</p>
+	{% for follow in followers %}
+	<a class="follow-profile" href="/account/profile/">
+		<img src="{% static "pictures/default/avatar.png" %}" class="avatar">
+		<p class="name-profile">{{ follow.followers.getName }}</p>
+	</a>
+
+	{% endfor %}
+
+	{% else %}
+	<p class="info">Vous êtes suivi par personne.</p>
+	{% endif %}
+
+	<p class="title-list">Voic d'autres relations que vous pouvez suivre :</p>
+	{% for profile in list_common %}
+	<a class="follow-profile" href="/account/profile/">
+		<img src="{% static "pictures/default/avatar.png" %}" class="avatar">
+		<p class="name-profile">{{ profile.name }}</p>
+		<p class="common_following">Vous suivez {{ profile.common_following }} personne(s) en commun.</p>
+	</a>
+
+	{% endfor %}
+</div>
+
+
+<div class="tab" id="photos" style="display:none">
+	<div class="galery">
+	
+		{% for photo_event in my_photos %}
+		<div class="w3-card-4 photo">
+			<img src='{{ photo_event.photo.url }}' onclick='openModal("{{ photo_event.photo.url }}","{{ photo_event.title }}")' class="image">
+			<div class="w3-container w3-center">
+				<p style="color : white">{{ photo_event.title }}</p>
+			</div>
+		</div>
+		{% endfor %}   
+		
+	</div>
+	
+	<div id="myModal" class="modal">
+		<span class="close" onclick="closeModal()">&times;</span>
+		<img class="modal-content" id="img01">
+		<div id="caption"></div>
+	</div>
+</div>
+
+
+<div class="tab" id="setting" style="display:none">
+
+	<p>Setting</p>
+</div>
+
+<script>
+
+	function openTab(tabName) {
+		var i;
+		var x = document.getElementsByClassName("tab");
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none"; 
+		}
+		document.getElementById(tabName).style.display = "block"; 
+	}
+</script>
+
+{% endblock %}
+

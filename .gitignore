@@ -1,3 +1,10 @@
+static/
+media/
+
+**/__pycache__
+
+db.sqlite3
+=======
 # Created by https://www.gitignore.io
 
 ### OSX ###
@@ -91,5 +98,5 @@ local_settings.py
 db.sqlite3
 connect/settings.py
 
-static/*
-media/*
+static/
+media/
